@@ -1,0 +1,31 @@
+--- pom.xml~	2013-03-01 09:27:48.503184556 +0100
++++ pom.xml	2013-03-01 09:29:26.886220106 +0100
+@@ -406,24 +406,28 @@
+       <groupId>org.eclipse.jetty</groupId>
+       <artifactId>jetty-server</artifactId>
+       <version>6.1.25</version>
++      <scope>provided</scope>
+     </dependency>
+ 
+     <dependency>
+       <groupId>org.eclipse.jetty</groupId>
+       <artifactId>jetty-webapp</artifactId>
+       <version>6.1.25</version>
++      <scope>provided</scope>
+     </dependency>
+ 
+     <dependency>
+       <groupId>org.eclipse.jetty</groupId>
+       <artifactId>jetty-servlet</artifactId>
+       <version>6.1.25</version>
++      <scope>provided</scope>
+     </dependency>
+ 
+     <dependency>
+       <groupId>org.eclipse.jetty</groupId>
+       <artifactId>jetty-util</artifactId>
+       <version>6.1.25</version>
++      <scope>provided</scope>
+     </dependency>
+ 
+     <dependency>
