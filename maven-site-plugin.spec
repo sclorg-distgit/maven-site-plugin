@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        3.2
-Release:        7.11%{?dist}
+Release:        7.12%{?dist}
 Summary:        Maven Site Plugin
 
 License:        ASL 2.0
@@ -20,43 +20,43 @@ Patch2:         %{pkg_name}-jetty-provided.patch
 BuildArch: noarch
 
 BuildRequires: %{?scl_prefix_java_common}maven-local
-BuildRequires: maven30-maven-artifact-manager
-BuildRequires: maven30-maven-plugin-plugin
-BuildRequires: maven30-maven-assembly-plugin
-BuildRequires: maven30-maven-compiler-plugin
-BuildRequires: maven30-maven-install-plugin
-BuildRequires: maven30-maven-javadoc-plugin
-BuildRequires: maven30-maven-jar-plugin
-BuildRequires: maven30-maven-resources-plugin
-BuildRequires: maven30-maven-doxia-sink-api
-BuildRequires: maven30-maven-doxia-logging-api
-BuildRequires: maven30-maven-doxia-core
-BuildRequires: maven30-maven-doxia-module-xhtml
-BuildRequires: maven30-maven-doxia-module-apt
-BuildRequires: maven30-maven-doxia-module-xdoc
-BuildRequires: maven30-maven-doxia-module-fml
-BuildRequires: maven30-maven-doxia-sitetools
-BuildRequires: maven30-maven-doxia-tools >= 1.4-8
-BuildRequires: maven30-maven-project
-BuildRequires: maven30-maven-surefire-plugin
-BuildRequires: maven30-maven-surefire-provider-junit
-BuildRequires: maven30-maven-shade-plugin
-BuildRequires: maven30-maven-plugin-testing-harness
-BuildRequires: maven30-maven-wagon-provider-api
-BuildRequires: maven30-maven-reporting-exec
-BuildRequires: maven30-plexus-containers-component-metadata
+BuildRequires: %{?scl_prefix}maven-artifact-manager
+BuildRequires: %{?scl_prefix}maven-plugin-plugin
+BuildRequires: %{?scl_prefix}maven-assembly-plugin
+BuildRequires: %{?scl_prefix}maven-compiler-plugin
+BuildRequires: %{?scl_prefix}maven-install-plugin
+BuildRequires: %{?scl_prefix}maven-javadoc-plugin
+BuildRequires: %{?scl_prefix}maven-jar-plugin
+BuildRequires: %{?scl_prefix}maven-resources-plugin
+BuildRequires: %{?scl_prefix}maven-doxia-sink-api
+BuildRequires: %{?scl_prefix}maven-doxia-logging-api
+BuildRequires: %{?scl_prefix}maven-doxia-core
+BuildRequires: %{?scl_prefix}maven-doxia-module-xhtml
+BuildRequires: %{?scl_prefix}maven-doxia-module-apt
+BuildRequires: %{?scl_prefix}maven-doxia-module-xdoc
+BuildRequires: %{?scl_prefix}maven-doxia-module-fml
+BuildRequires: %{?scl_prefix}maven-doxia-sitetools
+BuildRequires: %{?scl_prefix}maven-doxia-tools >= 1.4-8
+BuildRequires: %{?scl_prefix}maven-project
+BuildRequires: %{?scl_prefix}maven-surefire-plugin
+BuildRequires: %{?scl_prefix}maven-surefire-provider-junit
+BuildRequires: %{?scl_prefix}maven-shade-plugin
+BuildRequires: %{?scl_prefix}maven-plugin-testing-harness
+BuildRequires: %{?scl_prefix}maven-wagon-provider-api
+BuildRequires: %{?scl_prefix}maven-reporting-exec
+BuildRequires: %{?scl_prefix}plexus-containers-component-metadata
 BuildRequires: %{?scl_prefix_java_common}jetty-client >= 9.0.0-0.1.RC0
 BuildRequires: %{?scl_prefix_java_common}jetty-server >= 9.0.0-0.1.RC0
 BuildRequires: %{?scl_prefix_java_common}jetty-servlet >= 9.0.0-0.1.RC0
 BuildRequires: %{?scl_prefix_java_common}jetty-util >= 9.0.0-0.1.RC0
 BuildRequires: %{?scl_prefix_java_common}jetty-webapp >= 9.0.0-0.1.RC0
 BuildRequires: %{?scl_prefix_java_common}tomcat-servlet-3.0-api
-BuildRequires: maven30-plexus-archiver
-BuildRequires: maven30-plexus-containers-container-default
-BuildRequires: maven30-plexus-i18n
-BuildRequires: maven30-plexus-velocity
-BuildRequires: maven30-plexus-utils
-BuildRequires: maven30-jetty-parent
+BuildRequires: %{?scl_prefix}plexus-archiver
+BuildRequires: %{?scl_prefix}plexus-containers-container-default
+BuildRequires: %{?scl_prefix}plexus-i18n
+BuildRequires: %{?scl_prefix}plexus-velocity
+BuildRequires: %{?scl_prefix}plexus-utils
+BuildRequires: %{?scl_prefix}jetty-parent
 
 
 %description
@@ -70,7 +70,7 @@ API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %patch0 -p1
 %patch1 -p1
@@ -78,14 +78,14 @@ set -e -x
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 # skipping tests because we need to fix them first for jetty update
 %mvn_build -f
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -99,6 +99,9 @@ set -e -x
 %doc LICENSE NOTICE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 3.2-7.12
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 3.2-7.11
 - maven33 rebuild
 
