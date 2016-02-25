@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        3.2
-Release:        7.12%{?dist}
+Release:        7.13%{?dist}
 Summary:        Maven Site Plugin
 
 License:        ASL 2.0
@@ -19,7 +19,7 @@ Patch2:         %{pkg_name}-jetty-provided.patch
 
 BuildArch: noarch
 
-BuildRequires: %{?scl_prefix_java_common}maven-local
+BuildRequires: %{?scl_prefix}maven-local
 BuildRequires: %{?scl_prefix}maven-artifact-manager
 BuildRequires: %{?scl_prefix}maven-plugin-plugin
 BuildRequires: %{?scl_prefix}maven-assembly-plugin
@@ -99,6 +99,9 @@ set -e -x
 %doc LICENSE NOTICE
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 3.2-7.13
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 3.2-7.12
 - maven33 rebuild #2
 
